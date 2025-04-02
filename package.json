@@ -43,6 +43,7 @@
     "@antfu/eslint-config": "^4.11.0",
     "bumpp": "^10.1.0",
     "eslint": "^9.23.0",
+    "ky": "^1.8.0",
     "taze": "^19.0.4",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
