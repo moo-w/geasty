@@ -1,5 +1,12 @@
 import type { KyInstance } from 'ky'
-import type { CreateAGistOptions, GeastyOptions, GetGistForksOrCommitsOptions, GetGistForUserOptions, GetGistsOptions, UpdateAGistOptions } from './types'
+import type {
+  CreateAGistOptions,
+  GeastyOptions,
+  GetGistForksOrCommitsOptions,
+  GetGistForUserOptions,
+  GetGistsOptions,
+  UpdateAGistOptions,
+} from './types'
 import { GeastyError } from './errors'
 import { requestFactory } from './utils'
 
