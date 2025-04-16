@@ -1,3 +1,6 @@
+import ky from "ky"
+import { GeastyError } from "./errors"
+
 // ########### Geasty Methods Options ###########
 interface PaginationOptions {
   page?: number
@@ -90,7 +93,7 @@ export class Gist {
 }
 
 interface GistFileConstructorOptions {
-  filename?: string
+  filename: string
   type?: string
   raw_url?: string
   size?: number
@@ -101,7 +104,7 @@ interface GistFileConstructorOptions {
 }
 
 export class GistFile {
-  filename?: string
+  filename: string
   type?: string
   raw_url?: string
   size?: number
@@ -120,11 +123,21 @@ export class GistFile {
     this.content = options.content
     this.truncated = options.truncated
   }
+
+  async getContentByRawURL() {
+    if (!this.raw_url) {
+      throw new GeastyError(`GistFile: raw_url is not defined for ${this.filename}`)
+    }
+    const content = await ky.get(this.raw_url).text()
+    
+    return content
+  }
 }
 
 interface GistUserConstructorOptions {
   id: number
   node_id: string
+  login: string
   name?: string
   email?: string
   url: string
@@ -134,6 +147,7 @@ interface GistUserConstructorOptions {
 
 export class GistUser {
   id: number
+  login: string
   node_id: string
   name?: string
   email?: string
@@ -143,8 +157,9 @@ export class GistUser {
 
   constructor(options: GistUserConstructorOptions) {
     this.id = options.id
+    this.login = options.login
     this.node_id = options.node_id
-    this.name = options.name
+    this.name = options.name || options.login
     this.email = options.email
     this.url = options.url
     this.type = options.type
@@ -167,6 +182,7 @@ interface GistCommitConstructorOptions {
 export class GistCommit {
   url: string
   version: string
+  committed_at: string
   user?: GistUser
   change_status: {
     total?: number
@@ -174,13 +190,11 @@ export class GistCommit {
     deletions?: number
   }
 
-  committed_at: string
-
   constructor(options: GistCommitConstructorOptions) {
     this.url = options.url
     this.version = options.version
+    this.committed_at = options.committed_at
     this.user = options.user
     this.change_status = options.change_status
-    this.committed_at = options.committed_at
   }
 }
