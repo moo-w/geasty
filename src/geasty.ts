@@ -7,7 +7,7 @@ import type {
   GetGistsOptions,
   UpdateAGistOptions,
 } from './types'
-import { HTTPError } from 'ky'
+import ky, { HTTPError } from 'ky'
 import { GeastyError } from './errors'
 import {
   Gist,
@@ -179,6 +179,15 @@ export default class Geasty {
   }
 
   // ################## utils ##################
+  async getGistFirstFileContent(options: {
+    username: string,
+    gistId: string,
+  }) {
+    const url = `https://gist.githubusercontent.com/${options.username}/${options.gistId}/raw`
+    const content = await ky.get(url).text()
+    return content
+  }
+
   private _checkAccessToken() {
     if (!this._accessToken) {
       throw new GeastyError('Access token is required, please provide it.')
