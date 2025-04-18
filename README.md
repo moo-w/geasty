@@ -1,7 +1,70 @@
 # geasty
 
-Simple and easy to use [Gist](https://gist.github.com) API client.
+Simple and easy to use TypeScript library for interacting with GitHub [Gist](https://gist.github.com) API.
 
-## WIP
+## Features
 
-> WARNING: This library is in early development. Use at your own risk.
+- Full CRUD operations for gists
+- Support for forks, stars, and commits
+- Type-safe API with proper TypeScript definitions
+- Error handling with custom error classes
+- Authentication via GitHub access tokens
+
+## Installation
+
+```bash
+npm install geasty
+```
+
+## Usage
+
+```typescript
+import Geasty from 'geasty'
+
+// Initialize with your GitHub access token
+const geasty = new Geasty({ access_token: 'your-github-token' })
+
+// Example: Create a gist
+const newGist = await geasty.createAGist({
+  files: {
+    'hello.txt': { content: 'Hello World!' }
+  },
+  public: true,
+  description: 'My first gist'
+})
+
+// Example: Get all gists
+const myGists = await geasty.getAllGists()
+```
+
+## API Methods
+
+### Gist Management
+- `createAGist(options)`
+- `deleteAGist(gistId)`
+- `updateAGist(options)`
+- `getAGist(gistId)`
+- `getAllGists(options)`
+- `getPublicGists(options)`
+- `getStarredGists(options)`
+
+### User Gists
+- `getGistsForUser(options)`
+
+### Forks & Commits
+- `getGistForks(options)`
+- `getGistCommits(options)`
+- `forkAGist(gistId)`
+
+### Stars
+- `isGistStarred(gistId)`
+- `starAGist(gistId)`
+- `unstarAGist(gistId)`
+
+## Error Handling
+
+The library throws custom `GeastyError` for authentication issues and wraps GitHub API errors.
+
+## License
+
+MIT
