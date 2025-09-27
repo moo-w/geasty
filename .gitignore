@@ -4,3 +4,4 @@ Session.vim
 .vscode
 test.ts
 test.js
+.DS_Store
