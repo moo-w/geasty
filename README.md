@@ -7,7 +7,6 @@ Simple and easy to use TypeScript library for interacting with GitHub [Gist](htt
 - Full CRUD operations for gists
 - Support for forks, stars, and commits
 - Type-safe API with proper TypeScript definitions
-- Error handling with custom error classes
 - Authentication via GitHub access tokens
 
 ## Installation
@@ -40,6 +39,7 @@ const myGists = await geasty.getAllGists()
 ## API Methods
 
 ### Gist Management
+
 - `createAGist(options)`
 - `deleteAGist(gistId)`
 - `updateAGist(options)`
@@ -49,21 +49,20 @@ const myGists = await geasty.getAllGists()
 - `getStarredGists(options)`
 
 ### User Gists
+
 - `getGistsForUser(options)`
 
 ### Forks & Commits
+
 - `getGistForks(options)`
 - `getGistCommits(options)`
 - `forkAGist(gistId)`
 
 ### Stars
+
 - `isGistStarred(gistId)`
 - `starAGist(gistId)`
 - `unstarAGist(gistId)`
-
-## Error Handling
-
-The library throws custom `GeastyError` for authentication issues and wraps GitHub API errors.
 
 ## License
 
