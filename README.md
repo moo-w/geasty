@@ -8,6 +8,7 @@ Simple and easy to use TypeScript library for interacting with GitHub [Gist](htt
 
 ## Features
 
+- Use [`ofetch`](https://github.com/unjs/ofetch), a better fetch API, works on node, browser and workers.
 - Full CRUD operations for gists
 - Support for forks, stars, and commits
 - Type-safe API with proper TypeScript definitions
@@ -40,27 +41,38 @@ const newGist = await geasty.createAGist({
 const myGists = await geasty.getAllGists()
 ```
 
+## GitHub Authentication
+
+You can use Geasty with or without authentication. However, to access private gists or perform write operations, you need to provide a GitHub access token. It is recommended to provide an access token, cause authenticated requests have a [higher rate limit](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api).
+
+> [!NOTE]
+> [Check how to create a GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
 ## API Methods
 
-### Gist Management
+### Gist Retrieval
 
-- `createAGist(options)`
-- `deleteAGist(gistId)`
-- `updateAGist(options)`
 - `getAGist(gistId)`
 - `getAllGists(options)`
 - `getPublicGists(options)`
 - `getStarredGists(options)`
-
-### User Gists
-
 - `getGistsForUser(options)`
 
-### Forks & Commits
+### Create, Delete, Update
+
+- `createAGist(options)`
+- `deleteAGist(gistId)`
+- `updateAGist(options)`
+
+### Forks
 
 - `getGistForks(options)`
-- `getGistCommits(options)`
 - `forkAGist(gistId)`
+
+### Commits
+
+- `getGistCommits(options)`
+- `getAGistRevision(options)`
 
 ### Stars
 
@@ -68,9 +80,21 @@ const myGists = await geasty.getAllGists()
 - `starAGist(gistId)`
 - `unstarAGist(gistId)`
 
+### Utils
+
+- `getRawGistFileContent(options)`
+- `hasAccessToken()`
+
+> [!IMPORTANT]
+> Check the [Type Doc][jsdocs-href] for detailed information.
+
+## References
+
+[GitHub REST API endpoints for gists](https://docs.github.com/en/rest/gists?apiVersion=2022-11-28)
+
 ## License
 
-MIT
+[MIT](./LICENSE) License &copy; 2025-PRESENT [Moozon Wei](https://github.com/moo-w)
 
 <!-- Badges -->
 [ver-img-src]: <https://img.shields.io/npm/v/geasty> "npm version image"
