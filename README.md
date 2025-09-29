@@ -2,6 +2,7 @@
 
 [![npm version][ver-img-src]][pkg-href]
 [![npm downloads][dls-img-src]][pkg-href]
+[![jsDocs.io][jsdocs-img-src]][jsdocs-href]
 
 Simple and easy to use TypeScript library for interacting with GitHub [Gist](https://gist.github.com) API.
 
@@ -75,3 +76,5 @@ MIT
 [ver-img-src]: <https://img.shields.io/npm/v/geasty> "npm version image"
 [dls-img-src]: <https://img.shields.io/npm/dm/geasty> "npm downloads image"
 [pkg-href]: <https://npmjs.com/pakcage/geasty> "npm version image"
+[jsdocs-img-src]: <https://img.shields.io/badge/jsDocs.io-reference-blue> "jsDocs.io image"
+[jsdocs-href]: <https://www.jsdocs.io/package/geasty> "jsDocs.io reference"
