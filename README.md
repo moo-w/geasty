@@ -10,7 +10,7 @@ Simple and easy to use TypeScript library for interacting with GitHub [Gist](htt
 - Full CRUD operations for gists
 - Support for forks, stars, and commits
 - Type-safe API with proper TypeScript definitions
-- Authentication via GitHub access tokens
+- Authentication via [GitHub access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
 ## Installation
 
