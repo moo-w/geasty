@@ -1,5 +1,8 @@
 # geasty
 
+[![npm version][ver-img-src]][pkg-href]
+[![npm downloads][dls-img-src]][pkg-href]
+
 Simple and easy to use TypeScript library for interacting with GitHub [Gist](https://gist.github.com) API.
 
 ## Features
@@ -67,3 +70,8 @@ const myGists = await geasty.getAllGists()
 ## License
 
 MIT
+
+<!-- Badges -->
+[ver-img-src]: <https://img.shields.io/npm/v/geasty> "npm version image"
+[dls-img-src]: <https://img.shields.io/npm/dm/geasty> "npm downloads image"
+[pkg-href]: <https://npmjs.com/pakcage/geasty> "npm version image"
