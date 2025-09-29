@@ -128,11 +128,12 @@ export default class Geasty {
       method: 'PATCH',
       body: JSON.stringify(rest),
     })
-    const gists = this._generateGists(resp)
-    return gists
+    const gist = this._generateGist(resp)
+    return gist
   }
 
   // ################## get ##################
+
   /**
    * Lists the authenticated user's gists or if called anonymously, this returns all public gists.
    *
@@ -374,7 +375,7 @@ export default class Geasty {
   }
 
   /**
-   * Star a gist.
+   * Unstar a gist.
    * The fine-grained token must have the following permission set:
    *   - "Gists" user permissions (write)
    *
@@ -408,25 +409,61 @@ export default class Geasty {
   }
 
   // ################## utils ##################
-  // async getGistFirstFileContent(options: {
-  //   username: string
-  //   gistId: string
-  // }) {
-  //   const url = `https://gist.githubusercontent.com/${options.username}/${options.gistId}/raw`
-  //   const content = await ky.get(url).text()
-  //   return content
-  // }
 
-  private _hasAccessToken() {
+  /**
+   * Get the raw content of a gist file.
+   *
+   * @param options
+   * @param options.username The handle for the GitHub user account
+   * @param options.gistId The unique identifier of the gist
+   * @param options.filename The name of the file within the gist. If not provided, the raw content of the first file in the gist will be returned.
+   * @returns Raw content of the gist file
+   *
+   * @example
+   * ```ts
+   * getRawGistFileContent({
+   *   username: 'github_username',
+   *   gistId: 'gist_id',
+   *   filename: 'file_name.txt',
+   * })
+   * ```
+   */
+  async getRawGistFileContent(options: {
+    /**
+     * The handle for the GitHub user account.
+     */
+    username: string
+    /**
+     * The unique identifier of the gist.
+     */
+    gistId: string
+    /**
+     * The name of the file within the gist. If not provided, the raw content of the first file in the gist will be returned.
+     */
+    filename?: string
+  }) {
+    const url = `https://gist.githubusercontent.com/${options.username}/${options.gistId}/raw${options.filename ? `/${options.filename}` : ''}`
+    const content = await this._req(url, {
+      parseResponse: r => r,
+    })
+    return content
+  }
+
+  /**
+   * Check if access token is provided.
+   *
+   * @returns Boolean indicating whether access token is provided
+   */
+  hasAccessToken() {
     return this._accessToken !== undefined
   }
 
-  private _checkAccessToken() {
-    if (!this._hasAccessToken()) {
-      throw new Error('Access token is required, please provide it.')
-    }
-  }
-
+  /**
+   * Generate GistFile instance.
+   *
+   * @param options
+   * @returns GistFile instance
+   */
   private _generateGistFile(options: any) {
     return new GistFile({
       filename: options.filename,
@@ -440,6 +477,12 @@ export default class Geasty {
     })
   }
 
+  /**
+   * Generate array of GistFile instances.
+   *
+   * @param options
+   * @returns Array of GistFile instances
+   */
   private _generateGistFiles(options: any) {
     const files = Object.entries(options).map(([filename, file]: [string, any]) => {
       return this._generateGistFile({
@@ -450,6 +493,12 @@ export default class Geasty {
     return files
   }
 
+  /**
+   * Generate GistUser instance.
+   *
+   * @param options
+   * @returns GistUser instance
+   */
   private _generateGistUser(options: any) {
     return new GistUser({
       id: options.id,
@@ -463,6 +512,12 @@ export default class Geasty {
     })
   }
 
+  /**
+   * Generate Gist instance.
+   *
+   * @param options
+   * @returns Gist instance
+   */
   private _generateGist(options: any) {
     const files = this._generateGistFiles(options.files)
     const owner = this._generateGistUser(options.owner)
@@ -480,6 +535,12 @@ export default class Geasty {
     })
   }
 
+  /**
+   * Generate array of Gist instances.
+   *
+   * @param options
+   * @returns Array of Gist instances
+   */
   private _generateGists(options: any) {
     const gists: Gist[] = options.map((gist: any) => {
       return this._generateGist(gist)
@@ -487,6 +548,12 @@ export default class Geasty {
     return gists
   }
 
+  /**
+   * Generate GistCommit instance.
+   *
+   * @param options
+   * @returns GistCommit instance
+   */
   private _generateCommit(options: any) {
     const user = this._generateGistUser(options.user)
     return new GistCommit({
@@ -498,6 +565,12 @@ export default class Geasty {
     })
   }
 
+  /**
+   * Generate array of GistCommit instances.
+   *
+   * @param options
+   * @returns Array of GistCommit instances
+   */
   private _generateCommits(options: any) {
     const commits: GistCommit[] = options.map((commit: any) => {
       return this._generateCommit(commit)

@@ -1,3 +1,4 @@
+// @ts-check
 import { defineConfig } from 'tsdown'
 
 export default defineConfig({
@@ -7,8 +8,5 @@ export default defineConfig({
   // shims: true,
   format: ['esm'],
   dts: true,
-  clean: true,
   sourcemap: true,
-  splitting: false,
-  treeshake: true,
 })

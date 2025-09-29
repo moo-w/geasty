@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      ofetch:
+        specifier: ^1.4.1
+        version: 1.4.1
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^5.4.1
@@ -17,9 +21,6 @@ importers:
       eslint:
         specifier: ^9.36.0
         version: 9.36.0(jiti@2.6.0)
-      ofetch:
-        specifier: ^1.4.1
-        version: 1.4.1
       taze:
         specifier: ^19.7.0
         version: 19.7.0
