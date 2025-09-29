@@ -7,7 +7,8 @@ export default defineConfig({
     'src/index.ts',
   ],
   exports: true,
-  format: ['esm', 'cjs'],
+  format: ['esm'],
+  fixedExtension: true,
   shims: true,
   sourcemap: true,
 })
