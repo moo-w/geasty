@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+github.com/moo-w/geasty.git"
   },
+  "bugs": {
+    "url": "https://github.com/moo-w/geasty/issues"
+  },
   "keywords": [
     "gist",
     "github",
