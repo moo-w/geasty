@@ -6,7 +6,12 @@ export default defineConfig({
   entry: [
     'src/index.ts',
   ],
-  exports: true,
+  exports: {
+    customExports: (exports) => {
+      delete exports['./package.json']
+      return exports
+    },
+  },
   format: ['esm'],
   fixedExtension: true,
   shims: true,
