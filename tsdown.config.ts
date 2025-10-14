@@ -13,7 +13,16 @@ export default defineConfig({
     },
   },
   format: ['esm'],
-  fixedExtension: true,
+  // fixedExtension: true,
+  // TODO: Change outExtensions to fixedExtension when jsdocs-io/web support new extractor
+  outExtensions: (ctx) => {
+    if (ctx.format === 'es') {
+      return {
+        js: '.mjs',
+        dts: '.d.ts',
+      }
+    }
+  },
   shims: true,
   sourcemap: true,
 })
