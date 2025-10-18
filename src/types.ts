@@ -1,5 +1,5 @@
 // ########### Geasty Methods Options ###########
-interface PaginationOptions {
+export interface PaginationOptions {
   /**
    * The page number of the results to fetch.
    *
@@ -113,7 +113,7 @@ export interface GetGistForksOrCommitsOptions extends PaginationOptions {
 
 // ################## Gist Types ##################
 
-interface GistConstructorOptions {
+export interface GistConstructorOptions {
   id: string
   node_id: string
   description?: string
@@ -152,7 +152,7 @@ export class Gist {
   }
 }
 
-interface GistFileConstructorOptions {
+export interface GistFileConstructorOptions {
   filename: string
   type?: string
   raw_url?: string
@@ -189,7 +189,7 @@ export class GistFile {
   }
 }
 
-interface GistUserConstructorOptions {
+export interface GistUserConstructorOptions {
   id: number
   node_id: string
   login: string
@@ -222,7 +222,7 @@ export class GistUser {
   }
 }
 
-interface GistCommitConstructorOptions {
+export interface GistCommitConstructorOptions {
   url: string
   version: string
   user?: GistUser

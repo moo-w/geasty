@@ -33,8 +33,7 @@ export default class Geasty {
   private _req: $Fetch
 
   /**
-   * @param options Geasty options
-   * @param options.access_token Fine-grained personal access tokens
+   * @param options - Geasty options
    *
    * @example
    * ```ts
@@ -53,10 +52,7 @@ export default class Geasty {
   /**
    * Allows you to add a new gist with one or more files.
    *
-   * @param options
-   * @param options.description Description of the gist
-   * @param options.public Flag indicating whether the gist is public
-   * @param options.files Names and content for the files that make up the gist
+   * @param options - Options for creating a gist
    * @returns The created gist
    *
    * @example
@@ -84,7 +80,7 @@ export default class Geasty {
    * The fine-grained token must have the following permission set:
    *   - "Gists" user permissions (write)
    *
-   * @param gistId The unique identifier of the gist.
+   * @param gistId - The unique identifier of the gist.
    *
    * @example
    * ```ts
@@ -104,10 +100,7 @@ export default class Geasty {
    * The fine-grained token must have the following permission set:
    *   - "Gists" user permissions (write)
    *
-   * @param options
-   * @param options.gistId The unique identifier of the gist.
-   * @param options.description The description of the gist.
-   * @param options.files The gist files to be updated, renamed, or deleted.
+   * @param options - Options for updating a gist
    * @returns Updated gist
    *
    * @example
@@ -137,10 +130,7 @@ export default class Geasty {
   /**
    * Lists the authenticated user's gists or if called anonymously, this returns all public gists.
    *
-   * @param options
-   * @param options.since Only show results that were last updated after the given time. This is a timestamp in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.
-   * @param options.page The page number of the results to fetch.
-   * @param options.per_page The number of results per page (max 100).
+   * @param options - Options for getting gists
    * @returns List of gists
    *
    * @example
@@ -163,7 +153,7 @@ export default class Geasty {
   /**
    * Gets a specified gist.
    *
-   * @param gistId The unique identifier of the gist.
+   * @param gistId - The unique identifier of the gist.
    * @returns Gist that matches the gist ID
    *
    * @example
@@ -180,11 +170,7 @@ export default class Geasty {
   /**
    * Lists public gists for the specified user.
    *
-   * @param options
-   * @param options.username The handle for the GitHub user account
-   * @param options.since Only show results that were last updated after the given time. This is a timestamp in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.
-   * @param options.page The page number of the results to fetch.
-   * @param options.per_page The number of results per page (max 100).
+   * @param options - Options for getting gists for a user
    * @returns List of public gists for the specified user
    *
    * @example
@@ -209,8 +195,8 @@ export default class Geasty {
   /**
    * Gets a specified gist revision.
    *
-   * @param gistId The unique identifier of the gist
-   * @param sha The sha of the gist revision
+   * @param gistId - The unique identifier of the gist
+   * @param sha - The sha of the gist revision
    * @returns Gist revision that matches the gist ID and sha
    *
    * @example
@@ -227,10 +213,7 @@ export default class Geasty {
   /**
    * List public gists sorted by most recently updated to least recently updated.
    *
-   * @param options
-   * @param options.since Only show results that were last updated after the given time. This is a timestamp in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.
-   * @param options.page The page number of the results to fetch.
-   * @param options.per_page The number of results per page (max 100).
+   * @param options - Options for getting public gists
    * @returns List of gists
    *
    * @example
@@ -253,10 +236,7 @@ export default class Geasty {
   /**
    * List the authenticated user's starred gists.
    *
-   * @param options
-   * @param options.since Only show results that were last updated after the given time. This is a timestamp in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.
-   * @param options.page The page number of the results to fetch.
-   * @param options.per_page The number of results per page (max 100).
+   * @param options - Options for getting starred gists
    * @returns List of starred gists
    *
    * @example
@@ -279,10 +259,7 @@ export default class Geasty {
   /**
    * List gist forks.
    *
-   * @param options
-   * @param options.gistId The unique identifier of the gist.
-   * @param options.page The page number of the results to fetch.
-   * @param options.per_page The number of results per page (max 100).
+   * @param options - Options for getting gist forks
    * @returns List of gist forks
    *
    * @example
@@ -306,10 +283,7 @@ export default class Geasty {
   /**
    * List gist commits.
    *
-   * @param options
-   * @param options.gistId The unique identifier of the gist.
-   * @param options.page The page number of the results to fetch.
-   * @param options.per_page The number of results per page (max 100).
+   * @param options - Options for getting gist commits
    * @returns List of gist commits
    *
    * @example
@@ -335,7 +309,7 @@ export default class Geasty {
   /**
    * Check if a gist is starred.
    *
-   * @param gistId The unique identifier of the gist.
+   * @param gistId - The unique identifier of the gist.
    * @returns Boolean indicating whether the gist is starred
    *
    * @example
@@ -361,7 +335,7 @@ export default class Geasty {
    * The fine-grained token must have the following permission set:
    *   - "Gists" user permissions (write)
    *
-   * @param gistId The unique identifier of the gist.
+   * @param gistId - The unique identifier of the gist.
    *
    * @example
    * ```ts
@@ -379,7 +353,7 @@ export default class Geasty {
    * The fine-grained token must have the following permission set:
    *   - "Gists" user permissions (write)
    *
-   * @param gistId The unique identifier of the gist.
+   * @param gistId - The unique identifier of the gist.
    *
    * @example
    * ```ts
@@ -397,7 +371,7 @@ export default class Geasty {
    * The fine-grained token must have the following permission set:
    *   - "Gists" user permissions (write)
    *
-   * @param gistId The unique identifier of the gist.
+   * @param gistId - The unique identifier of the gist.
    *
    * @example
    * ```ts
@@ -413,10 +387,7 @@ export default class Geasty {
   /**
    * Get the raw content of a gist file.
    *
-   * @param options
-   * @param options.username The handle for the GitHub user account
-   * @param options.gistId The unique identifier of the gist
-   * @param options.filename The name of the file within the gist. If not provided, the raw content of the first file in the gist will be returned.
+   * @param options - Options for getting raw gist file content
    * @returns Raw content of the gist file
    *
    * @example
@@ -461,7 +432,7 @@ export default class Geasty {
   /**
    * Generate GistFile instance.
    *
-   * @param options
+   * @param options - Options for generating GistFile
    * @returns GistFile instance
    */
   private _generateGistFile(options: any) {
@@ -480,7 +451,7 @@ export default class Geasty {
   /**
    * Generate array of GistFile instances.
    *
-   * @param options
+   * @param options - Options for generating GistFiles
    * @returns Array of GistFile instances
    */
   private _generateGistFiles(options: any) {
@@ -496,7 +467,7 @@ export default class Geasty {
   /**
    * Generate GistUser instance.
    *
-   * @param options
+   * @param options - Options for generating GistUser
    * @returns GistUser instance
    */
   private _generateGistUser(options: any) {
@@ -515,7 +486,7 @@ export default class Geasty {
   /**
    * Generate Gist instance.
    *
-   * @param options
+   * @param options - Options for generating Gist
    * @returns Gist instance
    */
   private _generateGist(options: any) {
@@ -538,7 +509,7 @@ export default class Geasty {
   /**
    * Generate array of Gist instances.
    *
-   * @param options
+   * @param options - Options for generating Gists
    * @returns Array of Gist instances
    */
   private _generateGists(options: any) {
@@ -551,7 +522,7 @@ export default class Geasty {
   /**
    * Generate GistCommit instance.
    *
-   * @param options
+   * @param options - Options for generating GistCommit
    * @returns GistCommit instance
    */
   private _generateCommit(options: any) {
@@ -568,7 +539,7 @@ export default class Geasty {
   /**
    * Generate array of GistCommit instances.
    *
-   * @param options
+   * @param options - Options for generating GistCommits
    * @returns Array of GistCommit instances
    */
   private _generateCommits(options: any) {
