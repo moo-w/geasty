@@ -183,10 +183,6 @@ export class GistFile {
     this.content = options.content
     this.truncated = options.truncated
   }
-
-  async getContentByRawURL() {
-    // TODO: implement fetch content by raw_url
-  }
 }
 
 export interface GistUserConstructorOptions {
